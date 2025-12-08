@@ -1,6 +1,17 @@
 "use client";
 import { cva } from "class-variance-authority";
 import { cn } from "@/lib/utils";
+import React, { ReactNode, ButtonHTMLAttributes } from "react";
+
+type Variant = 'primary' | 'outline' | undefined; // example variants, adjust as needed
+type Size = 'sm' | 'md' | 'lg' | undefined; // example sizes, adjust as needed
+
+interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+  className?: string;
+  variant?: Variant;
+  size?: Size;
+  children: ReactNode | undefined;
+}
 
 const buttonStyles = cva(
   "inline-flex items-center justify-center rounded-lg font-medium transition-all",
@@ -25,10 +36,12 @@ const buttonStyles = cva(
   }
 );
 
-export function Button({ className, variant, size, children, ...props }: any) {
+
+export function Button({ className, variant, size, children, ...props }: ButtonProps) {
   return (
     <button className={cn(buttonStyles({ variant, size }), className)} {...props}>
       {children}
     </button>
   );
 }
+
