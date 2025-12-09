@@ -19,19 +19,19 @@ This project was intentionally built as a **small, high-impact tool** to practic
 
 ---
 
-## 🎯 Features (v0.1)
+## 🎯 Features (v0.2)
 
-✔️ Start a focus session with one click
-✔️ Timer keeps running even if you:
-• switch tabs
-• open VSCode or any other apps (for this version)
-• refresh the page
-• close and reopen the browser
-✔️ Time is stored in localStorage
-✔️ Clean minimal UI with Next.js + React + Tailwind
-✔️ Fully deployable as a micro-project
-✔️ Clean time formatting (HH:MM:SS)
-✔️ Reset timer via double-click or by holding
+✔️ Start a focus session with one click  
+✔️ Timer keeps running even if you:  
+• switch tabs  
+• open VSCode or any other apps (for this version)  
+• refresh the page  
+• close and reopen the browser  
+✔️ Time is stored in localStorage  
+✔️ Clean minimal UI with Next.js + React + Tailwind  
+✔️ Fully deployable as a micro-project  
+✔️ Clean time formatting (HH:MM:SS)  
+✔️ Reset timer via double-click or by holding  
 
 ---
 
@@ -99,9 +99,10 @@ if (interval !== null) {
   clearInterval(intervalRef.current);
 }
 ```
-
+---
 ## 🔮 Future Version (Smart Focus Mode)
 
+<p style="color:green; text-align:center"></p>
 **Auto-Pause on distraction websites (YouTube, TikTok, Instagram)**
 
 **Auto-Resume on productive sites (GitHub, StackOverflow)**
@@ -124,6 +125,7 @@ if (interval !== null) {
 
 5. real-world problem solving
 
+<hr style="height: 5px; border: none; background: linear-gradient(to right, #f00, #00f);">
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
 ## Getting Started
