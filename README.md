@@ -102,7 +102,7 @@ if (interval !== null) {
 ---
 ## 🔮 Future Version (Smart Focus Mode)
 
-<p style="color:green; text-align:center"></p>
+<p style="color:green; text-align:center">
 **Auto-Pause on distraction websites (YouTube, TikTok, Instagram)**
 
 **Auto-Resume on productive sites (GitHub, StackOverflow)**
@@ -112,6 +112,7 @@ if (interval !== null) {
 **Optional Chrome Extension**
 
 **Daily productivity report**
+</p>
 
 ## ❤️ Credits
 
