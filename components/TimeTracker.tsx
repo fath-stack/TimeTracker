@@ -47,7 +47,7 @@ const TimeTracker = () => {
         const totalSec : number | null = inputMinute * 60;
 
 		if (isRunning) {
-			interval = window.setInterval(() => {
+			const interval = window.setInterval(() => {
                 if (inputMinute) {
                     setSeconds(totalSec);
                     setSeconds((prev) => {
@@ -77,7 +77,7 @@ const TimeTracker = () => {
 		if(!isRunning) {
 			localStorage.setItem("focusStart", String(Date.now()));
             if (inputMinute) {
-                localStorage.setItem("focusEnd", String(Date.now() + (inputSeconds * 1000));
+                localStorage.setItem("focusEnd", String(Date.now() + (inputMinute * 1000)));
             }
         	setisRunning(true);
 			setReset(false);
@@ -128,9 +128,9 @@ const TimeTracker = () => {
         type="number"
         min="1"
         placeholder="minutes"
-        value={inputSec}
+        value={inputMinute}
         disabled={isRunning}
-        onChange={(e) => setInputSeconds(Number(e.target.value))}
+        onChange={(e) => setInputMinute(Number(e.target.value))}
         className={`border p-2 rounded w-full mt-4 ${isRunning ? "opacity-50 cursor-not-allowed" : ''}`}
         />
         
