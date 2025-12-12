@@ -1,11 +1,51 @@
 "use client"
 
-import Link from "next/link"
-import { useState } from "react";
+import Link from "next/link";
+import { useEffect, useRef, useState } from "react";
+import { gsap } from "gsap";
 
 const Navbar = () => {
 
-  const [visible, setVisible] = useState(false);
+  const circleRefs = useRef([]);
+  const tlRef = useRef(null);
+  
+  useEffect(() => {
+  
+    const tl = gsap.timeline({ paused: false, yoyo: true, repeat: 1 });
+    tlRef.current = tl;
+
+    circles.forEach((c, i) => {
+      tl.fromTo(
+        circleRefs.current[i],
+        { width: 25, height: 25, opacity: 0},
+        {
+          width: c.size,
+          height: c.size,
+          opacity: 100,
+          duration: i * factor,
+          ease: "power3.out",
+        },
+      );
+    });
+
+    // return to first size by click  
+    const reset = () => {
+      tl.reverse(); // reverse waves
+    };
+
+    window.addEventListener("click", reset);
+    return () => window.removeEventListener("click", reset);
+  }, []);
+  
+  const circles = [
+    { size: 115 },
+    { size: 70 },
+    { size: 50 },
+    { size: 35 },
+    { size: 25 },
+  ];
+
+  const factor = 0.15; // waves index
 
   const links = [
     { href: "/about", label: "About" },
@@ -15,28 +55,21 @@ const Navbar = () => {
 
   const angles = [30, 90, 150];
 
-  const handleMenue = () => {
-    if (visible) {
-      setVisible(false);
-    } else {
-      setVisible(true);
-    }
-  }
-
   return (
 	<nav className=" relative flex w-full items-center justify-center ">
 
-    <button className=" absolute border size-25 -translate-y-25 rounded-full"
-    onClick={() => handleMenue()}
-    />
-    <div className={`relative flex w-full items-center justify-center transition duration-500 ease-linear ${visible ? '-translate-y-25' : '-translate-y-100'} mx-auto pointer-events-none`}>
-
-      <div className=" absolute flex size-120 border-4 border-[#575757c8] shadow-2xl shadow-[#767676] rounded-full"/>
-      <div className=" absolute flex size-70 border-4 border-[#575757c8] shadow-2xl shadow-[#909090e4] rounded-full"/>
-      <div className=" absolute flex size-50 border-4 border-[#575757c8] shadow-2xl shadow-[#9c9c9c] rounded-full"/>
-      <div className=" absolute flex size-35 border-4 border-[#575757c8] shadow-2xl shadow-[#a4a4a4] rounded-full"/>
-      <div className=" absolute flex size-25 border-4 border-[#575757c8] shadow-2xl shadow-[#ffffff] rounded-full"/>
-
+    <div className={`relative flex w-full items-center justify-center mx-auto`}>
+    
+      {circles.map((c, i) => (
+            <div
+            key={i}
+            ref={(el) => (circleRefs.current[i] = el)}
+            className="absolute rounded-full border-4 border-[#575757c8] shadow-2xl shadow-[#8c8c8c]"
+            style={{
+                width: c.size,
+                height: c.size,
+            }} />
+      ))}
       <div className="relative size-60">
         
         {links.map((link, index) => {
