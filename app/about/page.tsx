@@ -37,7 +37,7 @@ const About: React.FC = () => {
           Interested in collaborating or have a project idea? Feel free to reach out!
         </p>
         <a
-          href="Fathi.vercel.app"
+          href="https://fathi.vercel.app/"
           className="inline-block px-6 py-3 bg-yellow-500 text-white font-semibold hover:bg-yellow-600 transition rounded-4xl"
         >
           My website
